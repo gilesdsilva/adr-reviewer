@@ -1,0 +1,282 @@
+# ADR REVIEW RULES - SIMPLE TEXT FORMAT
+# Total: 53 Rules across 13 categories
+
+## SCORING IMPACT
+- BLOCKER: -20 points (must fix, blocks approval)
+- MAJOR: -3 points (significant issue)
+- MINOR: -1 point (small issue)
+- WARN: 0 points (warning only, no score impact)
+- SUGGESTION: 0 points (informational only)
+
+## STRUCTURE RULES (3 rules)
+
+R-STR-01 [BLOCKER] - Required metadata present
+Check: ADR must have id, title, status, date, and authors
+If missing: Add required metadata: ID, title, status, date, and authors.
+
+R-STR-02 [WARN] - Status field valid
+Check: Status must be one of: proposed, accepted, rejected, deprecated, superseded
+If missing: Status must be one of: proposed, accepted, rejected, deprecated, superseded.
+
+R-STR-03 [BLOCKER] - All required sections present
+Check: ADR must have Context, Decision, Consequences, and Alternatives sections
+If missing: Missing required sections. ADR must include: Context, Decision, Consequences, and Alternatives.
+
+## PROBLEM DEFINITION RULES (4 rules)
+
+R-PRB-01 [BLOCKER] - Clear problem statement
+Check: Must contain words like: problem, challenge, issue, need, gap
+If missing: Add explicit problem statement explaining what needs to be solved.
+
+R-PRB-02 [WARN] - Avoid solution-first language
+Check: Context should not start with "we need to", "we should", "we must", "the solution is"
+If violated: Context should describe the problem, not jump to solution. Start with the problem space.
+
+R-PRB-03 [MAJOR] - Constraints documented
+Check: Must mention: constraint, limitation, requirement, must have, cannot
+If missing: Document technical, business, or regulatory constraints affecting the decision.
+
+R-PRB-04 [MINOR] - Scope boundaries defined
+Check: Must define: in-scope, out-of-scope, not covered, future work
+If missing: Define what is in-scope and out-of-scope for this decision.
+
+## ALTERNATIVES ANALYSIS RULES (5 rules)
+
+R-ALT-01 [BLOCKER] - Multiple alternatives considered
+Check: Must have at least 2 alternatives discussed
+If missing: Consider at least 2 alternatives. Analyze trade-offs between options.
+
+R-ALT-02 [MAJOR] - Do nothing option evaluated
+Check: Must include: do nothing, status quo, current state, keep existing, no change
+If missing: Include 'do nothing' as an alternative. Evaluate cost of inaction.
+
+R-ALT-03 [MAJOR] - Pros and cons for each alternative
+Check: Must have both pros/advantages/benefits AND cons/disadvantages/drawbacks
+If missing: Provide pros and cons for each alternative considered.
+
+R-ALT-04 [MINOR] - Comparison criteria defined
+Check: Must mention: criteria, compare, evaluation, versus, vs.
+If missing: Define evaluation criteria used to compare alternatives (cost, time, complexity, etc.).
+
+R-ALT-05 [MAJOR] - Selection rationale clear
+Check: Must explain selection with: selected/chosen/decided/preferred + because/reason/rationale
+If missing: Explain why the selected option was chosen over alternatives.
+
+## ARCHITECTURE & DESIGN RULES (5 rules)
+
+R-ARC-01 [MAJOR] - Components and integration points
+Check: Must describe: component, service, module, layer, integration, interface, API
+If missing: Describe key components, services, and integration points.
+
+R-VIS-01 [MAJOR] - Process visualization
+Check: Must have: diagram, image, mermaid, ![, svg
+If missing: Add a process flow diagram showing phases and ownership boundaries.
+
+R-ARC-02 [MINOR] - Technology stack specified
+Check: Must mention: technology, framework, library, database, language, platform
+If missing: Specify the technology stack, frameworks, or tools to be used.
+
+R-ARC-03 [SUGGESTION] - Design patterns referenced
+Check: Should mention: pattern, microservice, event-driven, CQRS, saga, pub-sub, REST, GraphQL
+If missing: Consider referencing relevant architectural or design patterns.
+
+R-ARC-04 [MAJOR] - Scalability considerations
+Check: Must address: scale, scalability, growth, capacity, load, throughput, performance
+If missing: Address scalability and performance implications.
+
+## DATA CONTRACT RULES (5 rules - domain-specific, only apply if "data_contracts" enabled)
+
+R-CON-01 [MAJOR] - Functional concept clarity
+Check: Must define: base whitespot, enriched whitespot, enrichment, partner feedback
+If missing: Define functional differences and enrichment logic in plain language.
+Note: Only applies when working with data contracts
+
+R-DATA-01 [MAJOR] - Schema or data model documented
+Check: Must document: schema, data model, fields, attributes, structure, format
+If missing: Document data schema, model, or structure for data-centric decisions.
+Note: Only applies when working with data contracts
+
+R-DATA-02 [MAJOR] - Data quality criteria
+Check: Must define: data quality, accuracy, completeness, consistency, validation
+If missing: Define data quality requirements and validation rules.
+Note: Only applies when working with data contracts
+
+R-DQ-01 [MINOR] - Data quality improvement criteria
+Check: Must state: data quality, accuracy, parity score, pollution cleanup
+If missing: State how quality improves and how it will be measured.
+Note: Only applies when working with data contracts
+
+R-DATA-03 [MINOR] - Schema evolution strategy
+Check: Must address: breaking change, backward compatible, versioning, migration
+If missing: Address schema evolution: breaking vs non-breaking changes.
+Note: Only applies when working with data contracts
+
+## TRADE-OFFS & CONSEQUENCES RULES (4 rules)
+
+R-TRD-01 [BLOCKER] - Both positive and negative consequences
+Check: Must list BOTH positive/benefits AND negative/drawbacks/trade-offs/limitations
+If missing: List both positive and negative consequences. No decision is perfect.
+
+R-TRD-02 [MAJOR] - Technical debt implications
+Check: Must address: technical debt, tech debt, complexity, maintenance, long-term
+If missing: Address technical debt implications and long-term maintenance.
+
+R-TRD-03 [MAJOR] - Security implications
+Check: Must address: security, authentication, authorization, encryption, compliance, vulnerability
+If missing: Address security implications of this decision.
+
+R-TRD-04 [MAJOR] - Operational impact
+Check: Must describe: operation, monitoring, observability, support, SLA, incident
+If missing: Describe operational impact: monitoring, support burden, SLAs.
+
+## COST & EFFORT RULES (3 rules)
+
+R-CST-01 [MAJOR] - Implementation cost estimated
+Check: Must estimate: cost, effort, time, person-week, person-month, budget, hours, days
+If missing: Estimate implementation cost and effort (time, resources, budget).
+
+R-CST-02 [MAJOR] - Ongoing operational costs
+Check: Must consider: ongoing, operational cost, maintenance, license, subscription, hosting
+If missing: Consider ongoing operational and maintenance costs.
+
+R-CST-03 [MINOR] - Cost comparison across alternatives
+Check: Should compare: cheaper, expensive, cost-effective, TCO, total cost
+If missing: Compare costs across alternatives to justify selection.
+
+## VALUE & RISKS RULES (4 rules)
+
+R-BEN-01 [MAJOR] - Quantified benefits
+Check: Must quantify: GMV, efficiency, fill rate, parity score, time saved, revenue, percentages, dollar amounts
+If missing: Provide quantified benefit estimates (GMV, efficiency gains, KPI impact).
+
+R-RISK-01 [MAJOR] - Technical risks identified
+Check: Must identify: risk, failure, challenge, dependency, assumption
+If missing: Identify technical and business risks.
+
+R-RISK-02 [MAJOR] - Risk mitigation strategies
+Check: Must define: mitigate, mitigation, fallback, contingency, plan B, rollback
+If missing: Define risk mitigation strategies and fallback plans.
+
+R-RISK-03 [MINOR] - External dependencies flagged
+Check: Should flag: external, third-party, vendor, dependency, relies on
+If missing: Flag external dependencies and associated risks.
+
+## MIGRATION & ROLLOUT RULES (4 rules)
+
+R-MIG-01 [MAJOR] - Migration strategy defined
+Check: Must define: migration, rollout, deployment, phased, cutover, transition
+If missing: Define migration or rollout strategy (phased, big-bang, parallel run).
+
+R-MIG-02 [MAJOR] - Rollback plan
+Check: Must include: rollback, revert, undo, fallback, abort
+If missing: Include rollback or abort strategy if migration fails.
+
+R-MIG-03 [MAJOR] - Backward compatibility addressed
+Check: Must address: backward compatible, breaking change, compatibility, deprecation
+If missing: Address backward compatibility and breaking changes.
+
+R-MIG-04 [MINOR] - Testing strategy
+Check: Should outline: test, testing, QA, validation, pilot, beta, proof of concept, POC
+If missing: Outline testing or validation approach (pilot, beta, POC).
+
+## GOVERNANCE & COMPLIANCE RULES (4 rules)
+
+R-GOV-01 [MAJOR] - Enterprise architecture alignment
+Check: Must confirm: enterprise architecture, EA principle, standard, guideline, policy
+If missing: Confirm alignment with enterprise architecture principles and standards.
+
+R-GOV-02 [BLOCKER] - Regulatory compliance
+Check: If handling customer/personal/PII/health/financial data, must address: GDPR, CCPA, HIPAA, SOC2, compliance, regulation
+If missing: Address regulatory compliance if handling sensitive/regulated data.
+Note: This is conditional - only triggers if handling sensitive data
+
+R-GOV-03 [MINOR] - Approval requirements
+Check: Should identify: approval, sign-off, reviewed by, approved by
+If missing: Identify required approvals or governance checkpoints.
+
+R-GOV-04 [MINOR] - Vendor lock-in consideration
+Check: If using AWS/Azure/GCP/proprietary/vendor solutions, should address: vendor lock-in, exit strategy, portability
+If missing: Address vendor lock-in risks for proprietary solutions.
+Note: This is conditional - only triggers if using cloud/vendor solutions
+
+## STAKEHOLDER RULES (3 rules)
+
+R-STK-01 [MINOR] - Key stakeholders identified
+Check: Must identify: stakeholder, team, owner, architect, engineer, product
+If missing: Identify key stakeholders: decision makers, affected teams, consulted parties.
+
+R-STK-02 [MINOR] - Internal consumers & partner roles
+Check: Must list: internal consumers, partner roles, stakeholders sections
+If missing: List internal consumers and partner roles with their use cases.
+
+R-STK-03 [SUGGESTION] - Communication plan
+Check: Should mention: communicate, announce, training, documentation, onboarding
+If missing: Consider communication plan for affected teams.
+
+## METRICS & OBSERVABILITY RULES (3 rules)
+
+R-MET-01 [MAJOR] - Success metrics defined
+Check: Must define: metric, KPI, measure, target, goal, success criteria, threshold
+If missing: Define success metrics and how they will be measured.
+
+R-MET-02 [MAJOR] - Monitoring approach
+Check: Must describe: monitor, observability, telemetry, logging, alert, dashboard
+If missing: Describe monitoring and observability approach.
+
+R-MET-03 [SUGGESTION] - Quantified targets
+Check: Should include quantified targets with units: %, ms, req/s, GB, TB, seconds, minutes
+If missing: Include quantified targets where possible (e.g., <100ms latency, 99.9% uptime).
+
+## READABILITY RULES (3 rules)
+
+R-READ-01 [MINOR] - Clear section headers
+Check: Must use markdown headers for: Context, Decision, Consequences, Alternatives
+If missing: Use clear markdown section headers for structure.
+
+R-READ-02 [SUGGESTION] - Avoid excessive jargon
+Check: Warn if more than 15 undefined acronyms (TLA, FUD, YAGNI, BDUF, ETA, SOP, TBD, TBA, etc.)
+If violated: Define acronyms and avoid excessive jargon. Write for a broader audience.
+
+R-READ-03 [WARN] - Reasonable length
+Check: Word count should be between 500-5000 words
+If violated: ADR is too short (<500 words) or excessively long (>5000 words).
+
+## TRACEABILITY RULES (3 rules)
+
+R-TRC-01 [MINOR] - Related decisions referenced
+Check: Should reference: ADR-###, related decision, see also, supersedes, superseded by
+If missing: Reference related ADRs if this builds on or supersedes previous decisions.
+
+R-TRC-02 [SUGGESTION] - External references linked
+Check: Should link: https://, JIRA-###, RFC-###, [text](http...)
+If missing: Link to external documentation, tickets, or RFCs for context.
+
+R-FUP-01 [SUGGESTION] - Follow-up discovery plan
+Check: Should mention: follow-up ADR, discovery, experiments, future investigation
+If missing: Add follow-up ADRs or discovery plan for unresolved questions.
+
+## SUMMARY
+
+Total Rules: 53
+- BLOCKER severity: 6 rules (R-STR-01, R-STR-03, R-PRB-01, R-ALT-01, R-TRD-01, R-GOV-02)
+- MAJOR severity: 24 rules
+- MINOR severity: 14 rules
+- WARN severity: 3 rules (R-STR-02, R-PRB-02, R-READ-03)
+- SUGGESTION severity: 6 rules
+
+Auto-Blocker Triggers:
+1. Missing required metadata (R-STR-01)
+2. Missing required sections (R-STR-03)
+3. No problem statement (R-PRB-01)
+4. No alternatives considered (R-ALT-01)
+5. Only positive consequences listed (R-TRD-01)
+6. Regulated data without compliance (R-GOV-02)
+
+Domain-Specific Rules:
+- Data Contracts: 5 rules (R-CON-01, R-DATA-01, R-DATA-02, R-DQ-01, R-DATA-03)
+  Only apply when ADR involves data schemas, contracts, or data quality
+
+Conditional Rules:
+- R-GOV-02: Only triggers if handling sensitive/regulated data
+- R-GOV-04: Only triggers if using cloud/vendor solutions
+
