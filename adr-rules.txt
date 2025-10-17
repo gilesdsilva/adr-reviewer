@@ -22,6 +22,55 @@ R-STR-03 [BLOCKER] - All required sections present
 Check: ADR must have Context, Decision, Consequences, and Alternatives sections
 If missing: Missing required sections. ADR must include: Context, Decision, Consequences, and Alternatives.
 
+
+## Context & Clarity (3 rules)
+
+R-CNT-01 [MAJOR] – Internal capabilities listed
+Check: Context must explicitly list internal staff capabilities, enhancement/enrichment capabilities, and product content capabilities.
+If missing: Add a clear breakdown of these capability categories.
+
+R-CNT-02 [MAJOR] – Current ownership mapping
+Check: Must indicate which internal staff capabilities are currently supported by Journey/Core.
+If missing: Provide a mapping table or list showing ownership.
+
+R-CNT-03 [MINOR] – Problem urgency explained
+Check: Context should explain why the problem needs solving now (e.g., cost, delays, risks).
+If missing: Add rationale for urgency beyond historical context.
+
+
+## Decision & Consequences (3 rules)
+
+R-CON-05 [MAJOR] – Grey areas documented
+Check: Must describe any grey areas in functionality and how they will be handled.
+If missing: Add explicit mention of unresolved or ambiguous ownership areas.
+
+R-CON-06 [MAJOR] – Impact on people and skills
+Check: Consequences must include potential impact on engineering skills, team transfers, or training needs.
+If missing: Document expected skill gaps and mitigation.
+
+R-CON-07 [MAJOR] – Gold screens migration plan
+Check: Must list which Gold screens will move to Product Catalog and which will be phased out.
+If missing: Add migration details for UI components.
+
+
+## Trade-offs & Outcome Orientation
+
+R-TRD-05 [MAJOR] – Outcome-driven trade-offs
+Check: Trade-off table must include impact on:
+Cost of implementation
+User experience
+Coupling/encapsulation
+Innovation capacity
+If missing: Expand trade-off analysis beyond archi
+
+
+## Readability & Visualization
+
+R-VIS-02 [SUGGESTION] – Capability table included
+Check: ADR should include a simplified table of capabilities for clarity.
+If missing: Add a table summarizing capabilities and ownership.
+
+
 ## PROBLEM DEFINITION RULES (4 rules)
 
 R-PRB-01 [BLOCKER] - Clear problem statement
